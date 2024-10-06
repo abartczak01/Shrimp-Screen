@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
-  return <div className="bg-pink-900">Shrimps</div>;
+  return <div className="p-4">Shrimps</div>;
 }

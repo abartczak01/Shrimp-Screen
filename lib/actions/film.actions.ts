@@ -1,3 +1,4 @@
+"use server";
 import { connectToDB } from "../mongoose";
 
 import Film from "../models/film.model";
@@ -29,21 +30,27 @@ export async function addFilm({
   backdrop,
   isShowing,
 }: Params) {
-  await connectToDB();
+  try {
+    await connectToDB();
 
-  const film = new Film({
-    title,
-    overview,
-    director,
-    cast,
-    releaseDate,
-    duration,
-    trailerUrl,
-    MPARating,
-    poster,
-    backdrop,
-    isShowing,
-  });
+    const film = new Film({
+      title,
+      overview,
+      director,
+      cast,
+      releaseDate,
+      duration,
+      trailerUrl,
+      MPARating,
+      poster,
+      backdrop,
+      isShowing,
+    });
 
-  return film.save();
+    await film.save();
+    return { success: true, message: "Film added successfully" };
+  } catch (error: any) {
+    console.log(error);
+    return { success: false, message: `Failed to add film: ${error.message}` };
+  }
 }

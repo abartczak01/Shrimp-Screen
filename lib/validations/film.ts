@@ -1,16 +1,17 @@
-import * as z from "zod";
-import { MPARating } from "../enums";
+import * as Yup from "yup";
 
-export const filmValidation = z.object({
-  title: z.string().min(1).max(200),
-  overview: z.string().min(1).max(500),
-  director: z.string().min(1).max(50),
-  cast: z.array(z.string().min(1).max(50)),
-  releaseDate: z.date(),
-  duration: z.number().int().positive(),
-  trailerUrl: z.string().url().optional(),
-  MPARating: MPARating,
-  poster: z.string().url().optional(),
-  backdrop: z.string().url().optional(),
-  isShowing: z.boolean(),
+import { MPARatings } from "@/constants";
+
+export const filmValidation = Yup.object({
+  title: Yup.string().min(1).max(200).required("Title is required"),
+  overview: Yup.string().min(1).max(900).required("Overview is required"),
+  releaseDate: Yup.date().required("Release date is required"),
+  duration: Yup.number().positive().integer().required("Duration is required"),
+  director: Yup.string().min(1).max(50).required("Director is required"),
+  cast: Yup.array(Yup.string().min(1).max(50)).required("Cast is required"),
+  MPARating: Yup.string().oneOf(MPARatings).required("MPA Rating is required"),
+  isShowing: Yup.boolean().required("Required"),
+  trailerUrl: Yup.string().url().optional(),
+  poster: Yup.string().url().optional(),
+  backdrop: Yup.string().url().optional(),
 });

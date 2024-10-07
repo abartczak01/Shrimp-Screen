@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <main className="w-full flex flex-row">
       <AdminSidebar />
-      <section className="flex-1 border-l-2 border-stone-950 p-2">
+      <section className="flex-1 border-l-2 border-stone-950">
         {children}
       </section>
     </main>

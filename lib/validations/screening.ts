@@ -1,14 +1,14 @@
-import * as z from "zod";
+import * as Yup from "yup";
 
-export const screeningValidation = z.object({
-  filmId: z.string().min(1),
-  date: z.date(),
-  audioOption: z.string().min(1),
-  seats: z.array(
-    z.object({
-      row: z.number().int().positive(),
-      seat: z.number().int().positive(),
-      isBooked: z.boolean(),
+export const screeningValidation = Yup.object({
+  filmId: Yup.string().min(1),
+  date: Yup.date(),
+  audioOption: Yup.string().min(1),
+  seats: Yup.array(
+    Yup.object({
+      row: Yup.number().integer().positive(),
+      seat: Yup.number().integer().positive(),
+      isBooked: Yup.boolean(),
     })
   ),
 });

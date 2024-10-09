@@ -3,8 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+  .btn {
+    @apply button-hover text-white text-lg border-4 border-stone-950 px-3 py-2 font-bold;
+  }
   .blue-btn {
-    @apply button-hover text-white text-lg border-4 border-stone-950 bg-aero px-3 py-2 hover:bg-pictonBlue font-bold;
+    @apply button-hover btn bg-aero hover:bg-darkAero;
+  }
+  .orange-btn {
+    @apply button-hover btn bg-tomato hover:bg-darkTomato;
   }
   .topbar-btn {
     @apply hover:cursor-pointer font-bold flex h-full px-5 gap-1.5 items-center button-hover hover:bg-tomato;

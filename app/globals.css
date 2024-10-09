@@ -4,20 +4,23 @@
 
 @layer components {
   .blue-btn {
-    @apply button-hover text-white border-2 border-stone-950 bg-aero px-2.5 py-2 hover:bg-pictonBlue font-bold;
+    @apply button-hover text-white text-lg border-4 border-stone-950 bg-aero px-3 py-2 hover:bg-pictonBlue font-bold;
+  }
+  .topbar-btn {
+    @apply hover:cursor-pointer font-bold flex h-full px-5 gap-1.5 items-center button-hover hover:bg-tomato;
   }
   .header {
-    @apply px-0.5 font-bold border-b-4 text-4xl border-aero w-min whitespace-nowrap;
+    @apply px-0.5 font-bold border-b-8 text-5xl border-aero w-min whitespace-nowrap;
   }
 
   .main-container {
-    @apply flex min-h-screen flex-1 flex-col items-center pt-16 border-2 border-stone-950 border-t-0;
+    @apply flex min-h-screen flex-1 flex-col items-center pt-24 border-4 border-stone-950 border-t-0;
   }
   .button-hover {
     @apply transition-colors duration-500 ease-in-out;
   }
   .form-field {
-    @apply bg-white w-full px-2 py-1 border-b-2 border-r-2 border-stone-950 focus:outline-none focus:border-b-2 focus:border-aero;
+    @apply bg-white w-full px-2 py-1 border-b-4 border-r-4 border-stone-950 focus:outline-none focus:border-aero;
   }
   .form-error {
     @apply text-tomato absolute font-bold;

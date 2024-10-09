@@ -8,7 +8,9 @@ export const filmValidation = Yup.object({
   releaseDate: Yup.date().required("Release date is required"),
   duration: Yup.number().positive().integer().required("Duration is required"),
   director: Yup.string().min(1).max(50).required("Director is required"),
-  cast: Yup.array(Yup.string().min(1).max(50)).required("Cast is required"),
+  cast: Yup.array(
+    Yup.string().min(1).max(50).required("Field cannot be empty")
+  ).required("Cast is required"),
   MPARating: Yup.string().oneOf(MPARatings).required("MPA Rating is required"),
   isShowing: Yup.boolean().required("Required"),
   trailerUrl: Yup.string().url().optional(),

@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`text-stone-950 bg-pearl ${mukta.className}`}>
+        <body className={`text-stone-950 bg-aero ${mukta.className}`}>
           <main className="max-w-6xl mx-auto bg-alabaster">
             <Topbar />
             <section className="main-container">{children}</section>

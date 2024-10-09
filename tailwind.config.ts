@@ -13,6 +13,7 @@ const config: Config = {
         transparent: "transparent",
         current: "currentColor",
         tomato: "#F06542",
+        cinnabar: "#EE562F",
         white: "#ffffff",
         alabaster: "#f3efe2",
         pearl: "#E7DFC6",
@@ -21,7 +22,7 @@ const config: Config = {
         aquamarine: "#40dea7",
       },
       gridTemplateColumns: {
-        form: "1fr 4fr",
+        form: "1fr 3.5fr",
       },
     },
   },

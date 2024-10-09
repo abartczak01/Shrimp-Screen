@@ -25,9 +25,10 @@ export default function AddFilm() {
     isShowing: boolean | string;
   }
 
-  const handleSubmit = async (values: Props) => {
+  const handleSubmit = async (values: Props, resetForm: any) => {
     // TODO: find remove icon
     console.log(values);
+    setMsg("Adding film...");
     const result = await addFilm({
       ...values,
       releaseDate: new Date(values.releaseDate),
@@ -37,10 +38,14 @@ export default function AddFilm() {
       backdrop: values.backdrop || "",
     });
     setMsg(result.message);
+    if (result.success) {
+      resetForm();
+      setCastCount(1); // Reset the cast fields count if needed
+    }
   };
-
+  // className="lg:px-36 md:px-4 sm:px-6 px-4 "
   return (
-    <div className="px-44 pb-4">
+    <div className="border-4 border-stone-950 py-8 px-12 bg-pearl">
       <Formik
         initialValues={{
           title: "",
@@ -55,14 +60,14 @@ export default function AddFilm() {
           backdrop: "",
           isShowing: "true",
         }}
-        onSubmit={(values) => {
-          handleSubmit(values);
+        onSubmit={(values, { resetForm }) => {
+          handleSubmit(values, resetForm);
         }}
         validationSchema={filmValidation}
       >
         {({ values }) => (
           <Form>
-            <div className="grid grid-cols-form gap-y-7 gap-x-2">
+            <div className="grid grid-cols-form gap-y-7 gap-x-4 border-stone-950">
               <label htmlFor="title">Title</label>
               <div className="form-field-div">
                 <Field className="form-field" type="text" name="title" />
@@ -102,32 +107,27 @@ export default function AddFilm() {
                               values.cast.splice(i, 1);
                             }}
                           >
-                            {" "}
                             Remove
-                            {/* <Image
-                              src="/assets/tickets.svg"
-                              alt="delete"
-                              width={24}
-                              height={24}
-                            /> */}
                           </button>
                         )}
                       </div>
                     </div>
 
                     <ErrorMessage
-                      className="form-error"
+                      className={`form-error`}
                       name={`cast[${i}]`}
                       component="div"
                     />
                     {i === castCount - 1 && (
-                      <button
-                        className="mt-1 blue-btn"
-                        type="button"
-                        onClick={() => setCastCount((prev) => prev + 1)}
-                      >
-                        Add Cast Member
-                      </button>
+                      <div className="flex justify-end">
+                        <button
+                          className="mt-1 blue-btn"
+                          type="button"
+                          onClick={() => setCastCount((prev) => prev + 1)}
+                        >
+                          add a cast member
+                        </button>
+                      </div>
                     )}
                   </div>
                 </>
@@ -221,11 +221,11 @@ export default function AddFilm() {
                   name="overview"
                 />
                 <ErrorMessage
-                  className="form-error"
+                  className="form-error pl-12"
                   name="overview"
                   component="div"
                 />
-                {values.overview.length}/900
+                <div className="">{values.overview.length}/900</div>
               </div>
             </div>
             <div className="flex justify-end items-center gap-8">
@@ -235,7 +235,7 @@ export default function AddFilm() {
                 </div>
               )}
               <button className="blue-btn" type="submit">
-                Add a Film
+                add a film
               </button>
             </div>
           </Form>

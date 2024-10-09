@@ -6,19 +6,9 @@ export const adminSidebarLinks = [
   },
   {
     imgUrl: "/assets/tickets.svg",
-    route: "/admin/remove-film",
-    label: "Remove Film",
+    route: "/admin/browse-films",
+    label: "Browse Films",
   },
-  {
-    imgUrl: "/assets/tickets.svg",
-    route: "/admin/add-screaning",
-    label: "Add Screaning",
-  },
-  //   {
-  //     imgUrl: "assets/tickets.svg",
-  //     route: "/admin/remove-screaning",
-  //     label: "Delete Screaning",
-  //   },
   {
     imgUrl: "/assets/tickets.svg",
     route: "/admin/users",

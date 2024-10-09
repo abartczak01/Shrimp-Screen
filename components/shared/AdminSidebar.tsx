@@ -14,7 +14,7 @@ export default function AdminSidebar() {
   // TODO: type for link
   const pathname = usePathname();
   return (
-    <section className="flex-initial">
+    <section className="flex-initial bg-pearl text-xl">
       <div>
         {adminSidebarLinks.map((link: AdminSidebarLink) => {
           const isActive =
@@ -24,17 +24,17 @@ export default function AdminSidebar() {
             <Link
               href={link.route}
               key={link.label}
-              className={`button-hover hover:bg-tomato flex py-1.5 px-2 gap-1.5 ${
-                isActive && "bg-tomato"
+              className={`button-hover font-bold hover:bg-tomato flex py-4 px-8 gap-1.5 ${
+                isActive && "bg-tomato text-white"
               }`}
             >
-              <Image
+              {/* <Image
                 src={link.imgUrl}
                 alt={link.label}
                 width={24}
                 height={24}
-              />
-              <p>{link.label}</p>
+              /> */}
+              <p>{link.label.toLowerCase()}</p>
             </Link>
           );
         })}

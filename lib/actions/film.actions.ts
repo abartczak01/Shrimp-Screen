@@ -92,10 +92,36 @@ export async function fetchFilms({
 
     const films = await filmsQuery.exec();
 
+    const objectFilms = films.map((film) => film.toObject())
+
     const isNext = totalFilmsCount > skipAmount + films.length;
 
-    return { films, isNext };
+    return { films: objectFilms, isNext };
   } catch (error: any) {
     throw new Error(`Failed to fetch films: ${error.message}`);
+  }
+}
+
+export const fetchFilmByTitle = async (title: string) => {
+  try {
+    await connectToDB();
+    const regex = new RegExp(title, "i");
+
+    const film = await Film.findOne({ title: { $regex: regex } },);
+
+    return film.toObject();
+  } catch (error: any) {
+    throw new Error(`Failed to fetch film: ${error.message}`);
+  }
+}
+
+export const fetchFilmById = async (id: string) => {
+  try {
+    await connectToDB();
+    const film = await Film.findById(id);
+
+    return film.toObject();
+  } catch (error: any) {
+    throw new Error(`Failed to fetch film: ${error.message}`);
   }
 }

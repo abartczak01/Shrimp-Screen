@@ -14,7 +14,7 @@ export default function AdminSidebar() {
   // TODO: type for link
   const pathname = usePathname();
   return (
-    <section className="flex-initial bg-pearl text-xl">
+    <section className="flex-initial text-xl">
       <div>
         {adminSidebarLinks.map((link: AdminSidebarLink) => {
           const isActive =

@@ -2,7 +2,6 @@
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState } from "react";
-import Image from "next/image";
 import { filmValidation } from "@/lib/validations/film";
 import { addFilm } from "@/lib/actions/film.actions";
 import { MPARatings } from "@/constants";
@@ -40,10 +39,9 @@ export default function AddFilm() {
     setMsg(result.message);
     if (result.success) {
       resetForm();
-      setCastCount(1); // Reset the cast fields count if needed
+      setCastCount(1);
     }
   };
-  // className="lg:px-36 md:px-4 sm:px-6 px-4 "
   return (
     <div className="border-4 border-stone-950 py-8 px-12 bg-pearl">
       <Formik

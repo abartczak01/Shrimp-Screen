@@ -36,7 +36,7 @@ function Searchbar({ routeType }: Props) {
         className="object-contain"
       />
       <input
-        className="px-4 py-2 w-full focus:outline-none"
+        className="form-field text-lg px-3"
         id="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
